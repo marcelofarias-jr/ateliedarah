@@ -1,0 +1,168 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --card: #0a0a0a;
+  --card-foreground: #ffffff;
+  --popover: #0a0a0a;
+  --popover-foreground: #ffffff;
+  --primary: #ffffff;
+  --primary-foreground: #0a0a0a;
+  --secondary: #1a1a1a;
+  --secondary-foreground: #ffffff;
+  --muted: #262626;
+  --muted-foreground: #a3a3a3;
+  --accent: #1a1a1a;
+  --accent-foreground: #ffffff;
+  --destructive: #ff4444;
+  --destructive-foreground: #ffffff;
+  --border: #333333;
+  --input: #1a1a1a;
+  --ring: #ffffff;
+  --radius: 0rem;
+  
+  /* Accent colors - pink and green */
+  --emo-pink: #c94277;
+  --emo-green: #3d7a5a;
+  --emo-pink-light: #d4638f;
+  --emo-green-light: #4a9169;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ffffff;
+  --card: #0a0a0a;
+  --card-foreground: #ffffff;
+  --popover: #0a0a0a;
+  --popover-foreground: #ffffff;
+  --primary: #ffffff;
+  --primary-foreground: #0a0a0a;
+  --secondary: #1a1a1a;
+  --secondary-foreground: #ffffff;
+  --muted: #262626;
+  --muted-foreground: #a3a3a3;
+  --accent: #1a1a1a;
+  --accent-foreground: #ffffff;
+  --destructive: #ff4444;
+  --destructive-foreground: #ffffff;
+  --border: #333333;
+  --input: #1a1a1a;
+  --ring: #ffffff;
+}
+
+@theme inline {
+  --font-sans: var(--font-bebas), 'Bebas Neue', sans-serif;
+  --font-body: var(--font-space), 'Space Mono', monospace;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-emo-pink: var(--emo-pink);
+  --color-emo-green: var(--emo-green);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Large Checkered Background Pattern - Dark subtle */
+.checkered-bg-dark {
+  background-color: #0a0a0a;
+  background-image: 
+    linear-gradient(45deg, #141414 25%, transparent 25%),
+    linear-gradient(-45deg, #141414 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #141414 75%),
+    linear-gradient(-45deg, transparent 75%, #141414 75%);
+  background-size: 100px 100px;
+  background-position: 0 0, 0 50px, 50px -50px, -50px 0px;
+}
+
+/* Checkered Background - Gray and Pink */
+.checkered-bg-pink {
+  background-color: #1a1a1a;
+  background-image: 
+    linear-gradient(45deg, #c9427720 25%, transparent 25%),
+    linear-gradient(-45deg, #c9427720 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #c9427720 75%),
+    linear-gradient(-45deg, transparent 75%, #c9427720 75%);
+  background-size: 80px 80px;
+  background-position: 0 0, 0 40px, 40px -40px, -40px 0px;
+}
+
+/* Checkered pattern with pink and green - subtle/professional */
+.checkered-accent {
+  background-color: #0a0a0a;
+  background-image: 
+    linear-gradient(45deg, var(--emo-green) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--emo-pink) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--emo-pink) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--emo-green) 75%);
+  background-size: 60px 60px;
+  background-position: 0 0, 0 30px, 30px -30px, -30px 0px;
+  opacity: 0.15;
+}
+
+/* Mouse icon animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Underline effect with pink accent */
+.title-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.title-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--emo-pink) 0%, var(--emo-green) 100%);
+}
+
+/* Pink accent underline */
+.accent-underline::after {
+  background-color: var(--emo-pink);
+}
+
+/* Green accent underline */
+.accent-underline-green::after {
+  background-color: var(--emo-green);
+}
